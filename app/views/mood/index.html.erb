@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <blockquote>
+      <p>... music can change your mood instantly. It can make memories feel present and any dream seem tangible.</p>
+      <footer>Katie Kacvinsky in <cite title="Source Title">First Comes Love</cite></footer>
+    </blockquote>
+
+    <h1>What's your mood right now?</h1>
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <% @mood_list.each do |mood| %>
+          <a href="javascript:void(0);" data-bind="click: getTracks" data-mood="<%= mood.downcase %>" class="btn btn-default mood"><%= mood.capitalize %></a>
+        <% end %>
+
+      </div>
+      <div class="col-md-6"></div>
+    </div>
+
+  </div>
+</div>

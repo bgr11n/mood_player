@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require knockout
 //= require turbolinks
 //= require_tree .
