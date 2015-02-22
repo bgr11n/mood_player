@@ -1,17 +1,22 @@
 class MoodController < ApplicationController
-  respond_to :json
+  include Genre
 
   def index
     @mood_list = %w(Alone Angry Calm Confused Depressed Drunk Energetic Excited Hungry Lonely Loved Relaxed)
-    gon.api_key = ENV['api_key']
+
+    if params[:mood]
+      tracks = load_tracks_for params[:mood]
+      @tracks_uris = tracks.map{ |t| t['music_url'] }
+    end
   end
 
-  def load_tracks
-    puts params[:mood]
-    response = HTTParty.get("http://openapi.qa.vocvox.com/api/search/tracks",
-      :query => { :genre => "Alternative/Indie" },
-      :headers => { 'Content-Type' => 'application/json', 'x-api-auth' => ENV['api_key'] })
+  private
 
-    respond_with(response.body)
+  def load_tracks_for mood
+    response = HTTParty.get("http://openapi.qa.vocvox.com/api/search/tracks",
+      :query => { :genre => Genre.from_mood(mood) },
+      :headers => { 'Content-Type' => 'application/json', 'x-api-auth' => ENV['api_key'] })['tracks']
+
+    puts response.to_json
   end
 end

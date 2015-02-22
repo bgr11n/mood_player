@@ -9,14 +9,27 @@
     <h1>What's your mood right now?</h1>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
+        <%= render 'mood_selector' %>
+      </div>
+    </div>
 
-        <% @mood_list.each do |mood| %>
-          <a href="javascript:void(0);" data-bind="click: getTracks" data-mood="<%= mood.downcase %>" class="btn btn-default mood"><%= mood.capitalize %></a>
+    <div class="row">
+      <div class="col-md-12">
+
+        <% if @tracks_uris %>
+          <h2>Enjoy!</h2>
+          <br>
+
+          <% @tracks_uris.each do |u| %>
+
+            <p><%= mp3_player u %></p>
+
+          <% end %>
+
         <% end %>
 
       </div>
-      <div class="col-md-6"></div>
     </div>
 
   </div>
