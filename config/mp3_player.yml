@@ -1,6 +1,6 @@
 ## Options
 
-#:autostart:         'no'     # if yes, player starts automatically
+:autostart:         'yes'     # if yes, player starts automatically
 #:loop:              'no'     # if yes, player loops
 :animation:         'no'    # if no, player is always open
 #:remaining:         'no'     # if yes, shows remaining track time rather than elapsed time

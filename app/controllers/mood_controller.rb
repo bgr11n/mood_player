@@ -5,7 +5,7 @@ class MoodController < ApplicationController
     @mood_list = %w(Alone Angry Calm Confused Depressed Drunk Energetic Excited Hungry Lonely Loved Relaxed)
 
     if params[:mood]
-      tracks = load_tracks_for params[:mood]
+      tracks = load_tracks_for(params[:mood])
       @tracks_uris = tracks.map{ |t| t['music_url'] }
     end
   end
@@ -16,7 +16,5 @@ class MoodController < ApplicationController
     response = HTTParty.get("http://openapi.qa.vocvox.com/api/search/tracks",
       :query => { :genre => Genre.from_mood(mood) },
       :headers => { 'Content-Type' => 'application/json', 'x-api-auth' => ENV['api_key'] })['tracks']
-
-    puts response.to_json
   end
 end

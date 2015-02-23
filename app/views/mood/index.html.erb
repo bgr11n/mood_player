@@ -21,11 +21,7 @@
           <h2>Enjoy!</h2>
           <br>
 
-          <% @tracks_uris.each do |u| %>
-
-            <p><%= mp3_player u %></p>
-
-          <% end %>
+          <p><%= mp3_player @tracks_uris %></p>
 
         <% end %>
 
