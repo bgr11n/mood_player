@@ -4,18 +4,12 @@ class MoodController < ApplicationController
     @mood_list = %w(Alone Angry Calm Confused Depressed Drunk Energetic Excited Hungry Lonely Loved Relaxed)
 
     if params[:mood]
-      puts 'params[:mood]'
-      puts params[:mood]
-      gon.param = params[:mood]
-
       tracks = load_tracks_for(params[:mood])
-      gon.playlist = []
+      playlist = []
 
       tracks.each do |t|
-        gon.playlist << Serialize.track(t)
+        playlist << Serialize.track(t)
       end
-      puts 'gon.playlist'
-      puts gon.playlist
     end
   end
 
