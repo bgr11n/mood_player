@@ -5,26 +5,19 @@ class MoodController < ApplicationController
 
     if params[:mood]
       tracks = load_tracks_for(params[:mood])
-      playlist = []
+      @playlist = []
 
       tracks.each do |t|
-        playlist << Serialize.track(t)
+        @playlist << Serialize.track(t)
       end
     end
   end
 
-  def load_tracks
-    mood = params['mood']
+  private
+
+  def load_tracks_for mood
     tracks = HTTParty.get("http://openapi.qa.vocvox.com/api/search/tracks",
-      :query => { :genre => Genre.from_mood(mood) },
+      :query => { :genre => Genre.from_mood(mood), :offset => rand(1..3000) },
       :headers => { 'Content-Type' => 'application/json', 'x-api-auth' => ENV['api_key'] })['tracks']
-
-    playlist = []
-
-    tracks.each do |t|
-      playlist << Serialize.track(t)
-    end
-
-    render json: playlist
   end
 end

@@ -12,13 +12,16 @@
       <div class="col-md-12">
 
         <% @mood_list.each do |mood| %>
-          <a href="javascript:void(0)" class="btn btn-default mood" data-bind="click: loadPlaylistToPlayer" data-mood="<%= mood %>"><%= mood.capitalize %></a>
+          <%= link_to mood.capitalize, root_path({mood: mood}), class: 'btn btn-default mood' %>
         <% end %>
 
       </div>
     </div>
 
-    <!-- ko if: hasPlaylist -->
+    <script>
+      window.playlist = <%== @playlist.to_json %>;
+    </script>
+
     <div class="row">
       <div class="col-md-12">
         <h2>Enjoy!</h2>
@@ -68,7 +71,6 @@
 
       </div>
     </div>
-    <!-- /ko -->
 
   </div>
 </div>
