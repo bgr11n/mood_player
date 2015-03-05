@@ -18,6 +18,6 @@ class MoodController < ApplicationController
   def load_tracks_for mood
     tracks = HTTParty.get("http://api.randrmusic.com/api/search/tracks",
       :query => { :genre => Genre.from_mood(mood), :offset => rand(1..3000) },
-      :headers => { 'Content-Type' => 'application/json', 'x-api-auth' => ENV['api_key'] })['tracks']
+      :headers => { 'Content-Type' => 'application/json', 'x-api-auth' => ENV["API_KEY"] })['tracks']
   end
 end
