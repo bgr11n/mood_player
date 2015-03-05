@@ -1,15 +1,15 @@
 module Genre
   GENRE_MAP = {
-    alone: 'Vocals',
+    alone: 'Christian/Gospel',
     angry: 'Rap/Hip Hop',
-    calm: 'Instrumental',
-    confused: 'Blues',
+    calm: 'Folk',
+    confused: 'Latin',
     depressed: 'Alternative/Indie',
     drunk: 'Rock',
     energetic: 'Electronica/Dance',
     excited: 'Electronica/Dance',
     hungry: 'Pop',
-    lonely: 'Reggae/Ska',
+    lonely: 'World',
     loved: 'Classical/Opera',
     relaxed: 'Jazz'
   }
