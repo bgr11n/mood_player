@@ -5,3 +5,5 @@ This application is an example on usage of [R&R Music API](http://dev.randrmusic
 ## Usage
 
 Just simple choose your mood at this moment and application will do the rest magic to satisfy your music preferences.
+
+You can test application on [Heroku](https://awesome-mood-player.herokuapp.com/)
